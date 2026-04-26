@@ -2,6 +2,10 @@
 
 Dieses Telegramm enthält keine Status- oder Volumenteile im Anfang, sondern beginnt direkt mit dem M-Bus-Block für das aktuelle Volumen.
 
+**Original Raw Payload:** `44 37 2C 38 19 65 53 3C 16 8D 20 2F F0 36 BC 20 E4 82 60 05 CC 49 F6 D4 4E 27 2A B1 1C 2E 29 D6 99 B4 4C 43 C3 78 BC 78 CC ED F6 A1 3A 09 0F 6B 78 FB 27 04`
+
+**Decrypted Plain Payload:** `35 2A 79 05 09 61 78 00 00 00 00 E6 E4 00 00 5C 02 05 50 00 05 50 00 41 34 0B 0D EB 01 DD F3 00 00 0D`
+
 | Byte 0   | Byte 1   | Byte 2       | Byte 3       | Byte 4       | Byte 5   | Byte 6             | Byte 7   |
 | :------- | :------- | :----------- | :----------- | :----------- | :------- | :----------------- | :------- |
 | `35 2A`  | `79`     | `05 09 61 78`| `DD F3 00 00`| `E6 E4 00 00`| `5C 02`  | `05 50 00 05 50 00`| `41 34`  |
@@ -33,6 +37,10 @@ Dieses Telegramm enthält keine Status- oder Volumenteile im Anfang, sondern beg
 ### Telegramm #3: Application-CI=0x78 (Länge: 55 Bytes Plain)
 
 Dieses Telegramm beginnt mit Status- und Volumenteilen, gefolgt von anderen Messwerten.
+
+**Original Raw Payload:** `44 37 2C 38 19 65 53 3C 16 8D 20 30 F1 36 BC 20 AD 5B 75 1A 64 AF 2F 6E FC B2 CA B5 62 6E B9 97 B9 81 21 CD 42 F9 10 CB 70 7D AB BE 24 35 41 F6 16 B4 2C 03 6C 5D A9 89 95 E1 B7 56 97 42 DA AC 39 80 91 D1 FE EA A4 9B 1B`
+
+**Decrypted Plain Payload:** `6F C4 78 04 FF 23 00 00 00 00 44 13 E6 E4 00 00 52 3B 5C 02 06 FF 1B 05 50 00 05 50 00 42 6C 41 34 61 67 0B 51 67 0D 02 3B EB 01 04 13 DD F3 00 00 81 01 E7 FF 0F 0D`
 
 | Byte 0   | Byte 1   | Byte 2    | Byte 3       | Byte 4       | Byte 5       | Byte 6   | Byte 7   |
 | :------- | :------- | :-------- | :----------- | :----------- | :----------- | :------- | :------- |
