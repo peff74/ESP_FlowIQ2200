@@ -30,6 +30,7 @@ Two Arduino sketches to read data from a Kamstrup FlowIQ 2200 water meter using 
   * **AES Decryption:** Uses your individual 16-byte key to unlock the payload.
   * **CRC Verification (EN 13757):** The code calculates a 16-bit checksum over the decrypted data and compares it with the transmitted CRC bytes. 
 
+* **RSSI monitoring**
 
 ---
 
