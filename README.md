@@ -80,12 +80,33 @@ The CC1101 communicates with the ESP32 via the SPI bus. Since both devices opera
 | **GDO0** | GPIO 27 | RX Interrupt (Data Ready) |
 | **GDO2** | GPIO 26 | FIFO Threshold (For long packets) |
 
+![Intro logo](https://github.com/peff74/esp_flowiq2200/blob/main/ESP32_cc1101.png)
 
 * **Configuration in Sketch**
 
   * **Before uploading, update these variables in your `.ino` file:**
     * `meterId`: The ID found on your meter's housing (entered in Hex).
     * `key`: The 32-character Hex key provided by your water utility company.
+   
+* **Serial Log**
+
+```text
+====== Packet #398  RSSI=-86 dBm ======
+[RAW] Len=52  Link-CI=0x8D
+[RAW] 44 37 2C 38 19 65 53 3C 16 8D 20 75 33 9A BC ... (Encrypted data)
+[ID] Meter-ID OK
+[DEC] Application-CI=0x79  plainLen=34
+[DEC] D6 F0 79 05 09 B1 79 00 00 00 00 E6 E4 00 ... (Decrypted plain text)
+
+[CRC] read=0xF0D6  calc=0xF0D6  OK
+[CI]  Compact Frame (0x79) - FlowIQ 2200
+
+[VAL] total_m3     = 62.755 m3
+[VAL] target_m3    = 58.598 m3
+[VAL] target_date  = 2026-04-01
+[VAL] flow_now     = 0 L/h
+[VAL] status       = 0x00000000  OK
+```
 
 ---
 
