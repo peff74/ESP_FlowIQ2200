@@ -1,6 +1,7 @@
 # ESP_flowiq2200
 
 Two Arduino sketches to read data from a Kamstrup FlowIQ 2200 water meter using a CC1101 radio module.
+![AHT20_BMP280 logo](https://github.com/peff74/esp8266_OLED_HW-364A/blob/main/front_1.jpg)
 
 ## Features
 * **Big Sketch (Full + Compact Frames):**  
