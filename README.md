@@ -1,7 +1,7 @@
 # ESP_flowiq2200
 
 Two Arduino sketches to read data from a Kamstrup FlowIQ 2200 water meter using a CC1101 radio module.
-![AHT20_BMP280 logo](https://github.com/peff74/esp8266_OLED_HW-364A/blob/main/front_1.jpg)
+![Intro logo](https://github.com/peff74/esp_flowiq2200/blob/main/intro.png)
 
 ## Features
 * **Big Sketch (Full + Compact Frames):**  
@@ -25,8 +25,11 @@ Two Arduino sketches to read data from a Kamstrup FlowIQ 2200 water meter using 
 * **Promiscuous Mode:**  
   Allows passive listening to all M-Bus messages in range to identify the **meter ID**.
 
-* **CRC Check:**  
-  Verifies the integrity of all received telegrams.
+* **Multi-step check:**  
+  * **ID Check:** Filters for your specific Meter-ID.
+  * **AES Decryption:** Uses your individual 16-byte key to unlock the payload.
+  * **CRC Verification (EN 13757):** The code calculates a 16-bit checksum over the decrypted data and compares it with the transmitted CRC bytes. 
+
 
 ---
 
@@ -46,7 +49,45 @@ The Full Frame doesn’t add anything useful here. It just confirms that the Com
 Handling Full Frames is unnecessary overhead for this device.  
 Compact Frames (CI=0x79) are simpler, more robust, and get the job done.
 
+---
 
+## Getting started
+* **Required Hardware**
+
+  * **ESP32 DevBoard:** 
+  * **CC1101 RF Module:** Ensure you use the **868 MHz** version (wM-Bus operates at 868.95 MHz).
+
+* **Libraries**
+
+  * **Crypto** (by Rhys Weatherley):
+    * Provides `AES.h` and `CBC.h` for decryption.
+   
+  * **CC1101_ESP_Arduino** (by wischbgr):
+    * The specialized driver for using CC1101 with ESP32 SPI.
+
+* **Wiring Diagram**
+
+The CC1101 communicates with the ESP32 via the SPI bus. Since both devices operate at **3.3V**, no level shifters are needed.
+
+| CC1101 Pin | ESP32 Pin (Standard) | Description |
+| :--- | :--- | :--- |
+| **VCC** | 3V3 | Power Supply (3.3V) |
+| **GND** | GND | Ground |
+| **SI (MOSI)** | GPIO 23 | Master Out Slave In |
+| **SO (MISO)** | GPIO 19 | Master In Slave Out |
+| **SCK** | GPIO 18 | Serial Clock |
+| **CSN (SS)** | GPIO 5 | Chip Select |
+| **GDO0** | GPIO 27 | RX Interrupt (Data Ready) |
+| **GDO2** | GPIO 26 | FIFO Threshold (For long packets) |
+
+
+* **Configuration in Sketch**
+
+  * **Before uploading, update these variables in your `.ino` file:**
+    * `meterId`: The ID found on your meter's housing (entered in Hex).
+    * `key`: The 32-character Hex key provided by your water utility company.
+
+---
 
 ## Application-CI=0x79 (34 Bytes Plain) - Compact Frame
 
@@ -168,4 +209,4 @@ Compact Frames (CI=0x79) are simpler, more robust, and get the job done.
 
 </details>
 
----
+
