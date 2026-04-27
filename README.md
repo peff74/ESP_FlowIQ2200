@@ -230,4 +230,5 @@ The CC1101 communicates with the ESP32 via the SPI bus. Since both devices opera
 
 </details>
 
+![Badge](https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2Fpeff74%2FESP_FlowIQ2200&label=Hits&icon=github&color=%23198754&message=&style=flat&tz=UTC)
 
