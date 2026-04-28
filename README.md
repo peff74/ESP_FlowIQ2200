@@ -4,14 +4,25 @@ Two Arduino sketches to read data from a Kamstrup FlowIQ 2200 water meter using 
 ![Intro logo](https://github.com/peff74/esp_flowiq2200/blob/main/intro.png)
 
 ## Features
-* **Big Sketch (Full + Compact Frames):**  
-  Receives both 0x79 (Compact Frame) and 0x78 (Full Frame).  
-  ⚠️ Note: This adds complexity due to handling Full Frames and mechanisms like GDO2 threshold burst detection.
+* **Big Sketch (Full + Compact Frames):**
+  * flowIQ2200_Full.ino
+  * Receives both 0x79 (Compact Frame) and 0x78 (Full Frame).
+  * A telegram is transmitted every 16 seconds. First, 7 compact are sent, followed by 1 full.
+  * This adds complexity due to handling Full Frames and mechanisms like GDO2 threshold burst detection.
 
-* **Small Sketch (Recommended):**  
-  Receives only 0x79 (Compact Frame).  
-  This is the recommended approach as it is significantly simpler in structure.  
-  The Compact Frame contains all relevant data and is transmitted every 16 seconds.
+* **Small Sketch (only Compact Frames):**
+  * flowIQ2200_Compact.ino
+  * Receives only 0x79 (Compact Frame).  
+  * This is the basic approach, as it is significantly simpler in structure, but still uses polling.
+  * Simple, but can be blocked by other tasks (like WiFi).
+  * The Compact Frame contains all relevant data and is transmitted every 16 seconds.
+ 
+* **ISR Version (only Compact Frames):**
+  * ⚠️Recommended⚠️
+  * flowIQ2200_Compact_ISR.ino
+  * Receives only 0x79 (Compact Frame)
+  * Uses ISR to ensure maximum stability during multitasking with services such as WiFi/MQTT.
+  * The Compact Frame contains all relevant data and is transmitted every 16 seconds.
 
 * **Data included in telegrams:**
   * **Total Consumption (Total Volume):** Current overall consumption in m³  
