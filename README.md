@@ -24,7 +24,7 @@ Two Arduino sketches to read data from a Kamstrup FlowIQ 2200 water meter using 
   * Uses ISR to ensure maximum stability while multitasking with services such as WiFi/MQTT.
   * The Compact Frame contains all relevant data and is transmitted every 16 seconds.
     
-* **MQTT Version (The "All-rounder")
+* **MQTT Version (The "All-rounder"):**
   * ⚠️Also Recommended⚠️
   * flowIQ2200_MQTT.ino
   * The all-in-one solution for seamless integration.
