@@ -1,6 +1,6 @@
 # ESP_flowiq2200
 
-Two Arduino sketches to read data from a Kamstrup FlowIQ 2200 water meter using a CC1101 radio module.
+A collection of Arduino sketches to read Kamstrup FlowIQ 2200 data via CC1101, ranging from basic frame reception to ISR-stable MQTT integration.
 ![Intro logo](https://github.com/peff74/esp_flowiq2200/blob/main/intro.png)
 
 ## Features
